@@ -2,17 +2,18 @@
 
 int main(int argc, char **argv, char **env)
 {
-	(void)(argv);
-	(void)(argc);
-	(void)(env);
-
-	char *entry_info = NULL, **tokenized, **token_path, *path;
+	char *entry_info = NULL, *path = NULL;
+	char **tokenized = NULL, **token_path = NULL;
 	
 	char *path_dir = NULL;
 	void *(*func_builtin)(char **);
 
 	int fd_read, tty = 1;
 	size_t len = 0;
+
+	(void)(argv);
+	(void)(argc);
+	(void)(env);
 
 	if (isatty(STDIN_FILENO) == 0)
 		tty = 0;
