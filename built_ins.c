@@ -2,9 +2,15 @@
 
 void *exe_cd(char **args)
 {
-	printf("Here goes a CD proc\n");
-	printf("%s\n", args[0]);
-	return (NULL);
+	if (args[1] == NULL)
+		perror("Expected path to cd");
+	else
+	{
+		if (chdir(args[1]) != 0)
+			perror("Could not change directory");
+	}
+	printf("%s\n", args[1]);
+	return (0);
 }
 void *exe_help(char **args)
 {
