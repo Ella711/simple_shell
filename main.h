@@ -24,7 +24,7 @@ char *_strdup(char *str);
 /*Tokenizer*/
 char **tokenize_line(char *line);
 /*Execute*/
-int exec_proc(char **args, char **env);
+int exec_proc(char **args, char **env, char *path);
 /*Function to pointer*/
 void *(*is_built_in(char **args))(char **tokenized);
 /*cd command*/
@@ -40,6 +40,6 @@ char * look_for_path(char **env);
 /*Tokenize PATH*/
 char **tokenize_path(char *line);
 /*filther path*/
-char * filter_path(char * command, char *path);
+char * filter_path(char **path, char *command);
 
 #endif /*MAIN_HEADER*/
