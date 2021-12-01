@@ -14,7 +14,7 @@ void *exe_help(char **args)
 }
 void *exe_exit(char **args)
 {
+	(void)(args);
 	printf("Here goes an Exit proc\n");
-	printf("%s\n", args[0]);
-	return (NULL);
+	exit(EXIT_SUCCESS);
 }
