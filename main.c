@@ -6,12 +6,12 @@ int main(int argc, char **argv, char **env)
 	(void)(argc);
 	(void)(env);
 
-	char *entry_info = NULL, **tokenized, **token_path;
+	char *entry_info = NULL, **tokenized, **token_path, *path;
 	
 	char *path_dir = NULL;
 	void *(*func_builtin)(char **);
 
-	int fd_read, tty = 1, status, i = 0;
+	int fd_read, tty = 1;
 	size_t len = 0;
 
 	if (isatty(STDIN_FILENO) == 0)
@@ -36,20 +36,13 @@ int main(int argc, char **argv, char **env)
 		{
 			path_dir = look_for_path(env);
 			token_path = tokenize_path(path_dir);
-			while (token_path[i])
-			{
-				printf("%s\n", token_path[i]);
-				i++;
-			}
-			
-
-			/*path = filter_path(tokenized[0], token_path);*/
-			status = exec_proc(tokenized, env);
+			path = filter_path(token_path, tokenized[0]);
+			exec_proc(tokenized, env, path);
 		}
 		else
 			func_builtin(tokenized);
 
-	} while (status);
+	} while (1);
 
 	return (0);
 }
