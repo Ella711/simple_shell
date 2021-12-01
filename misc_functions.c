@@ -50,23 +50,23 @@ char *look_for_path(char **env)
 	return (env[i]);
 }
 
-/*char * filter_path(char * command, char *path)
+char * filter_path(char *command, char **path)
 {
-	int size_path = strlen(path);
-	char * concatenated_path = malloc(5000);
-	struct stat buf;
-		
-	printf("%s, this is the path", path);
+	unsigned int i = 0, j = 0;
+	struct stat buff;
+	char *temp = malloc(3000);
 
-	strcpy(concatenated_path, path);
-
-	concatenated_path[size_path++] = "/";
-
-	strcat(concatenated_path, command);
-
-	printf("%s\n\n", concatenated_path);
-
-	stat(concatenated_path, &buf);
-
-	return(concatenated_path);
-}*/
+	for (i = 0; path[i]; i++)
+	{
+		strcpy(temp, path[i]);
+		j = strlen(temp);
+		if (temp[j] != '/')
+			strcat(temp, "/");
+		strcat(temp, command);
+		if (stat(temp, &buff) == 0)
+			return(temp);
+		printf("%s\n\n", temp);
+	}
+	
+	return (temp);
+}
