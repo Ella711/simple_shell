@@ -1,9 +1,10 @@
 #include "main.h"
 
-int exec_proc(char **args, char **env)
+int exec_proc(char **args, char **env, char *path)
 {
 	pid_t pid;
 	int status, ret;
+
 
 	pid = fork();
 	if (pid == -1)
@@ -11,7 +12,7 @@ int exec_proc(char **args, char **env)
 	else if (pid == 0)
 	{
 
-		ret = execve(args[0], args, env);
+		ret = execve(path, args, env);
 		if (ret == -1)
 			perror("Still here?, there are too many errors to fix go to fix them\n\n");
 	}
