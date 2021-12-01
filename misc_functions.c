@@ -50,7 +50,7 @@ char *look_for_path(char **env)
 	return (env[i]);
 }
 
-char * filter_path(char *command, char **path)
+char *filter_path(char *command, char **path)
 {
 	unsigned int i = 0, j = 0;
 	struct stat buff;
