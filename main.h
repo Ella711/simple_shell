@@ -41,5 +41,7 @@ char * look_for_path(char **env);
 char **tokenize_path(char *line);
 /*filther path*/
 char * filter_path(char **path, char *command);
+/* free arguements */
+/* void free_args(char **token); */
 
 #endif /*MAIN_HEADER*/

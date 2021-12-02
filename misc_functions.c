@@ -4,7 +4,7 @@
  * _strdup - returns a pointer to a newly allocated space in memory
  *
  * @str: Input String
- *    
+ *
  * Return: Returns null if string is not allocated or returns string allocated
  * in different mem location
  *
@@ -35,6 +35,20 @@ char *_strdup(char *str)
 	return (newString);
 }
 
+/* void free_args(char **token)
+{
+	int i = 0;
+
+	printf("%s\n", token[i]);
+
+	while (token[i] != NULL)
+	{
+		free(token[i]);
+		i++;
+	}
+	free(token);
+} */
+
 char *look_for_path(char **env)
 {
 	int i = 0;
@@ -50,11 +64,11 @@ char *look_for_path(char **env)
 	return (env[i]);
 }
 
-char * filter_path(char **path, char *command)
+char *filter_path(char **path, char *command)
 {
 	unsigned int i = 0, j = 0;
 	struct stat buff;
-	char *temp = malloc(3000);
+	char *temp = malloc(sizeof(char) * 500);
 
 	for (i = 0; path[i]; i++)
 	{
@@ -63,10 +77,14 @@ char * filter_path(char **path, char *command)
 		if (temp[j] != '/')
 			strcat(temp, "/");
 		strcat(temp, command);
+		temp = realloc(temp, (sizeof(char) * strlen(temp) +1));
 		if (stat(temp, &buff) == 0)
-			return(temp);
+		{
+			return (temp);
+		}
 		printf("%s\n\n", temp);
 	}
-	
-	return (temp);
+	free(path);
+	free(temp);
+	return (EXIT_SUCCESS);
 }

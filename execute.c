@@ -5,7 +5,6 @@ int exec_proc(char **args, char **env, char *path)
 	pid_t pid;
 	int status, ret;
 
-
 	pid = fork();
 	if (pid == -1)
 		return (-1);
@@ -24,5 +23,7 @@ int exec_proc(char **args, char **env, char *path)
 
 		wait(&status);
 	}
+	free(path);
+	free(args);
 	return (1);
 }
