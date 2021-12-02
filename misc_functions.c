@@ -70,6 +70,14 @@ char *filter_path(char **path, char *command)
 	struct stat buff;
 	char *temp = malloc(sizeof(char) * 500);
 
+	if(stat(command, &buff) == 0)
+	{
+		free(temp);
+		
+		return(command);
+	}
+
+
 	for (i = 0; path[i]; i++)
 	{
 		strcpy(temp, path[i]);
@@ -84,7 +92,7 @@ char *filter_path(char **path, char *command)
 		}
 		printf("%s\n\n", temp);
 	}
-	free(path);
+	
 	free(temp);
 	return (EXIT_SUCCESS);
 }

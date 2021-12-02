@@ -8,7 +8,7 @@ int main(int argc, char **argv, char **env)
 	char *path_dir = NULL;
 	void *(*func_builtin)(char **);
 
-	int fd_read, tty = 1, vuelta = 0;
+	int fd_read, tty = 1, vuelta = 0, status;
 	size_t len = 0;
 
 	(void)(argv);
@@ -38,14 +38,17 @@ int main(int argc, char **argv, char **env)
 			path_dir = look_for_path(env);
 			if (vuelta == 0)
 				token_path = tokenize_path(path_dir);
-			free(path_dir);
+		
 			path = filter_path(token_path, tokenized[0]);
-			exec_proc(tokenized, env, path);
+
+			status = exec_proc(tokenized, env, path);
 		}
 		else
+		{
 			func_builtin(tokenized);
+		}
 	vuelta++;
-	} while (1);
+	} while (status);
 
 	free(token_path);
 	free(entry_info);
