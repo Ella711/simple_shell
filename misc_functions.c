@@ -66,33 +66,34 @@ char *look_for_path(char **env)
 
 char *filter_path(char **path, char *command)
 {
-	unsigned int i = 0, j = 0;
-	struct stat buff;
-	char *temp = malloc(sizeof(char) * 500);
+	unsigned int i = 0, j = 0, k = 0;
+	char *temp = NULL;
 
-	if(stat(command, &buff) == 0)
-	{
-		free(temp);
-		
+	if(access(command, X_OK) == 0)
 		return(command);
-	}
 
 
 	for (i = 0; path[i]; i++)
 	{
+		j = strlen(path[i]);
+		k = strlen(command);
+
+		temp = malloc(sizeof(char) + j + k + 2);
+		if (temp == NULL)
+			exit(-1);
+
 		strcpy(temp, path[i]);
-		j = strlen(temp);
+				
 		if (temp[j] != '/')
 			strcat(temp, "/");
 		strcat(temp, command);
-		temp = realloc(temp, (sizeof(char) * strlen(temp) +1));
-		if (stat(temp, &buff) == 0)
+		strcat(temp, "\0");
+		if (access(temp, X_OK) == 0)
 		{
 			return (temp);
 		}
 		printf("%s\n\n", temp);
+		free(temp);
 	}
-	
-	free(temp);
-	return (EXIT_SUCCESS);
+	return (NULL);
 }
