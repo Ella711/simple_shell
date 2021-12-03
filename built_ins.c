@@ -1,6 +1,6 @@
 #include "main.h"
 
-void *exe_cd(char **args)
+int exe_cd(char **args)
 {
 	if (args[1] == NULL)
 		perror("Expected path to cd");
@@ -10,15 +10,15 @@ void *exe_cd(char **args)
 			perror("Could not change directory");
 	}
 	printf("%s\n", args[1]);
-	return (0);
+	return (1);
 }
-void *exe_help(char **args)
+int exe_help(char **args)
 {
 	printf("Here goes a help proc\n");
 	printf("%s\n", args[0]);
-	return (NULL);
+	return (1);
 }
-void *exe_exit(char **args)
+int exe_exit(char **args)
 {
 	(void)(args);
 	printf("Here goes an Exit proc\n");

@@ -1,6 +1,6 @@
 #include "main.h"
 
-void *(*is_built_in(char **args))(char **tokenized)
+int (*is_built_in(char **args))(char **tokenized)
 {
 
     size_t i = 0;
