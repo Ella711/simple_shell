@@ -13,12 +13,14 @@
 typedef struct builtin
 {
     char *command;
-    void *(*command_func)(char **);
+    int (*command_func)(char **args);
 } builtin_t;
 
 
 extern char **env;
 
+/* handles ctrl_d */
+void ctrl_d(int sig);
 /*Duplicates a string*/
 char *_strdup(char *str);
 /*Tokenizer*/
@@ -26,15 +28,16 @@ char **tokenize_line(char *line);
 /*Execute*/
 int exec_proc(char **args, char **env, char *path);
 /*Function to pointer*/
-void *(*is_built_in(char **args))(char **tokenized);
+int (*is_built_in(char **args))(char **tokenized);
 /*cd command*/
-void * exe_cd(char **);
+int exe_cd(char **args);
 /*help command*/
-void * exe_help(char **);
+int exe_help(char **args);
 /*exit command*/
-void * exe_exit(char **);
+int exe_exit(char **args);
 
-
+/* READS LINE */
+char *read_line(void);
 /*Look for the PATH*/
 char * look_for_path(char **env);
 /*Tokenize PATH*/
@@ -42,6 +45,6 @@ char **tokenize_path(char *line);
 /*filther path*/
 char * filter_path(char **path, char *command);
 /* free arguements */
-/* void free_args(char **token); */
+void free_args(char **token);
 
 #endif /*MAIN_HEADER*/

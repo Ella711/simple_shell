@@ -2,18 +2,19 @@
 
 int main(int argc, char **argv, char **env)
 {
-	char *entry_info = NULL, *path = NULL;
+	char *line = NULL, *path = NULL;
 	char **tokenized = NULL, **token_path = NULL;
 
 	char *path_dir = NULL;
-	void *(*func_builtin)(char **);
+	int (*func_builtin)(char **);
 
-	int fd_read, tty = 1, vuelta = 0, status;
-	size_t len = 0;
+	int tty = 1, vuelta = 0, status;
 
 	(void)(argv);
 	(void)(argc);
 	(void)(env);
+
+	signal(SIGINT, ctrl_d);
 
 	if (isatty(STDIN_FILENO) == 0)
 		tty = 0;
@@ -25,12 +26,9 @@ int main(int argc, char **argv, char **env)
 
 		fflush(stdin);
 		/* READ */
-		fd_read = getline(&entry_info, &len, stdin);
-		if (fd_read == -1)
-			return (-1);
-
+		line = read_line();
 		/*Split or tokenize the input*/
-		tokenized = tokenize_line(entry_info);
+		tokenized = tokenize_line(line);
 		/*Cheks if it is built in or isn't*/
 		if (tokenized[0])
 			func_builtin = is_built_in(tokenized);
@@ -59,8 +57,30 @@ int main(int argc, char **argv, char **env)
 			func_builtin(tokenized);
 		}
 		vuelta++;
+		
+
 	} while (status);
 
-	free(entry_info);
+	free(line);
 	return (0);
+}
+
+char *read_line(void)
+{
+	char *line = NULL;
+	size_t len = 0;
+
+	
+	if (getline(&line, &len, stdin) == -1)
+	{
+		free(line);
+		exit (0);
+	}
+	return (line);
+}
+
+void ctrl_d(int sig)
+{
+	(void)sig;
+	exit(EXIT_SUCCESS);
 }
