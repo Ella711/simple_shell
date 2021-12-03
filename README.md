@@ -63,7 +63,7 @@ Where **Command** is always required in comparison to the **Flags** or **Args** 
 
 `ls -l /usr/local/`
 
-![Example](https://imgur.com/iBxAjVx.jpg)
+![Example](https://imgur.com/w4UTsSc.jpg)
 
 ### Non-Interactive
 
