@@ -1,6 +1,6 @@
 #include "main.h"
 
-int exec_proc(char **args, char **env, char *path)
+int exec_proc(char **args, char *path)
 {
 	pid_t pid;
 	int status, ret;
@@ -11,7 +11,7 @@ int exec_proc(char **args, char **env, char *path)
 	else if (pid == 0)
 	{
 
-		ret = execve(path, args, env);
+		ret = execve(path, args, environ);
 		if (ret == -1)
 		{
 			perror("Still here?, there are too many errors to fix go to fix them\n\n");
@@ -23,7 +23,7 @@ int exec_proc(char **args, char **env, char *path)
 
 		wait(&status);
 	}
-	free(path);
-	free(args);
+
+
 	return (1);
 }

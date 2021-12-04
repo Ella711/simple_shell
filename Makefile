@@ -2,7 +2,7 @@
 #	gcc -Wall -Werror -pedantic -Wextro -g -std=gnu89
 
 CC = gcc 
-CFLAG = -Wall -Werror -pedantic -Wextra -g -std=gnu89
+CFLAG = -Wall -Werror -pedantic -Wextra -std=gnu89 -ggdb
 
 shell:
 	$(CC)$(CFLAG) *.c -o shell_alpha_V0.3
@@ -10,3 +10,4 @@ shell:
 
 clean:
 	rm -r shell_alpha_V0.3
+

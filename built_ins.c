@@ -22,5 +22,5 @@ int exe_exit(char **args)
 {
 	(void)(args);
 	printf("Here goes an Exit proc\n");
-	exit(EXIT_SUCCESS);
+	return(EXIT_SUCCESS);
 }

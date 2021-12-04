@@ -54,6 +54,7 @@ char **tokenize_path(char *line)
 		}
 		temp_token = strtok(NULL, ":");
 	}
+	temp_token = NULL;
 	token[i] = NULL;
 
 	return (token);

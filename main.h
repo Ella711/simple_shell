@@ -17,7 +17,7 @@ typedef struct builtin
 } builtin_t;
 
 
-extern char **env;
+extern char **environ;
 
 /* handles ctrl_d */
 void ctrl_d(int sig);
@@ -26,7 +26,7 @@ char *_strdup(char *str);
 /*Tokenizer*/
 char **tokenize_line(char *line);
 /*Execute*/
-int exec_proc(char **args, char **env, char *path);
+int exec_proc(char **args, char *path);
 /*Function to pointer*/
 int (*is_built_in(char **args))(char **tokenized);
 /*cd command*/
@@ -39,7 +39,7 @@ int exe_exit(char **args);
 /* READS LINE */
 char *read_line(void);
 /*Look for the PATH*/
-char * look_for_path(char **env);
+char * look_for_path();
 /*Tokenize PATH*/
 char **tokenize_path(char *line);
 /*filther path*/

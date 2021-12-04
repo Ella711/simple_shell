@@ -49,24 +49,24 @@ char *_strdup(char *str)
 	free(token);
 } */
 
-char *look_for_path(char **env)
+char *look_for_path()
 {
 	int i = 0;
-	while (env[i])
+	while (environ[i])
 	{
-		if (strncmp(env[i], "PATH", 4) == 0)
+		if (strncmp(environ[i], "PATH", 4) == 0)
 		{
 			break;
 		}
 		i++;
 	}
 
-	return (env[i]);
+	return (environ[i]);
 }
 
 char *filter_path(char **path, char *command)
 {
-	unsigned int i = 0, j = 0, k = 0;
+	unsigned int i = 0, j = 0, k = 0, u = 0;
 	char *temp = NULL;
 
 	if(access(command, X_OK) == 0)
@@ -77,13 +77,14 @@ char *filter_path(char **path, char *command)
 	{
 		j = strlen(path[i]);
 		k = strlen(command);
-
-		temp = malloc(sizeof(char) + j + k + 2);
+		u = j + k + 2;
+		printf("%d, %d\n", j, k);
+		temp = malloc(sizeof(char) + u);
 		if (temp == NULL)
 			exit(-1);
-
+		
 		strcpy(temp, path[i]);
-				
+		
 		if (temp[j] != '/')
 			strcat(temp, "/");
 		strcat(temp, command);
