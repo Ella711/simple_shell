@@ -75,3 +75,6 @@ An example:
 
 ![Non interactive](https://imgur.com/bbF13Ql.jpg)
 
+## Flow Chart
+
+![enter image description here](https://imgur.com/1MVYS0H.png)
