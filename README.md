@@ -78,3 +78,30 @@ An example:
 ## Flow Chart
 
 ![enter image description here](https://imgur.com/Qd96fB0.png)
+
+## References
+[Shell Computing](https://en.wikipedia.org/wiki/Shell_(computing)) Article on Wikipedia.
+
+[Man Pages](https://man7.org/linux/man-pages/) in Shell command or in `Man7.org`
+
+[Tutorial - Write a Shell](https://brennan.io/2015/01/16/write-a-shell-in-c/) in C by Stephen Brennan
+
+
+## Authors
+
+### Ornella Russo:
+
+**GitHub Account:**
+`https://github.com/Ella711`
+
+**Email Account:**
+`ornella_russo@outlook.com`
+
+
+### Daniel Cerón:
+
+**GitHub Account:**
+`https://github.com/DanielCeron-Holberton`
+
+**Email Account:**
+`danielceron584@gmail.com`
