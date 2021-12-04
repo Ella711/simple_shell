@@ -14,7 +14,7 @@ int main(int argc, char **argv, char **env)
 	(void)(argc);
 	(void)(env);
 
-	signal(SIGINT, ctrl_d);
+	signal(SIGINT, ctrl_c);
 
 	if (isatty(STDIN_FILENO) == 0)
 		tty = 0;
@@ -96,8 +96,9 @@ char *read_line(void)
 	return (line);
 }
 
-void ctrl_d(int sig)
+void ctrl_c(int sig)
 {
 	(void)sig;
-	exit(EXIT_SUCCESS);
+	putchar('\n');
+	write(STDOUT_FILENO, "($H3LL) -> ", 11);
 }
