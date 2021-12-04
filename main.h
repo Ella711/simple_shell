@@ -19,8 +19,8 @@ typedef struct builtin
 
 extern char **environ;
 
-/* handles ctrl_d */
-void ctrl_d(int sig);
+/* handles ctrl_c */
+void ctrl_c(int sig);
 /*Duplicates a string*/
 char *_strdup(char *str);
 /*Tokenizer*/
