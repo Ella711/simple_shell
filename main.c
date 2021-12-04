@@ -46,8 +46,8 @@ int main(int argc, char **argv, char **env)
 			{
 				path_dir = strdup(look_for_path());
 				token_path = tokenize_path(path_dir);
-				free(path_dir);
 				path = filter_path(token_path, tokenized[0]);
+				free(path_dir);
 				if (path != NULL)
 				{
 					status = exec_proc(tokenized, path);
