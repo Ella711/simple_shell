@@ -35,20 +35,6 @@ char *_strdup(char *str)
 	return (newString);
 }
 
-/* void free_args(char **token)
-{
-	int i = 0;
-
-	printf("%s\n", token[i]);
-
-	while (token[i] != NULL)
-	{
-		free(token[i]);
-		i++;
-	}
-	free(token);
-} */
-
 char *look_for_path()
 {
 	int i = 0;

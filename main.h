@@ -44,7 +44,7 @@ char * look_for_path();
 char **tokenize_path(char *line);
 /*filther path*/
 char * filter_path(char **path, char *command);
-/* free arguements */
-void free_args(char **token);
+/* check if can be executed */
+int check_exec(char **tokens);
 
 #endif /*MAIN_HEADER*/

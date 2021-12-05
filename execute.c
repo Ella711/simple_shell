@@ -1,5 +1,35 @@
 #include "main.h"
 
+int check_exec(char **tokens)
+{
+	char *path_dir = NULL, *path = NULL, **token_path = NULL;
+	int status = 1;
+	
+	if (access(tokens[0], X_OK) != 0)
+	{
+		path_dir = strdup(look_for_path());
+		token_path = tokenize_path(path_dir);
+		path = filter_path(token_path, tokens[0]);
+		free(path_dir);
+		free(token_path);
+		if (path != NULL)
+		{
+			status = exec_proc(tokens, path);
+			free(path);
+			return (status);
+		}
+		else
+			perror("Command Not Found");
+		
+	}
+	else
+	{
+		status = exec_proc(tokens, tokens[0]);
+		return (status);
+	}
+	return (status);
+}
+
 int exec_proc(char **args, char *path)
 {
 	pid_t pid;
@@ -23,7 +53,6 @@ int exec_proc(char **args, char *path)
 
 		wait(&status);
 	}
-
 
 	return (1);
 }
