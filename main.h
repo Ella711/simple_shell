@@ -46,5 +46,7 @@ char **tokenize_path(char *line);
 char * filter_path(char **path, char *command);
 /* check if can be executed */
 int check_exec(char **tokens);
+/*free elements*/
+void free_elements(char *free1, char **free2);
 
 #endif /*MAIN_HEADER*/

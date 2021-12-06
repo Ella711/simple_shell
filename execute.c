@@ -10,8 +10,7 @@ int check_exec(char **tokens)
 		path_dir = strdup(look_for_path());
 		token_path = tokenize_path(path_dir);
 		path = filter_path(token_path, tokens[0]);
-		free(path_dir);
-		free(token_path);
+		free_elements(path_dir, token_path);		
 		if (path != NULL)
 		{
 			status = exec_proc(tokens, path);

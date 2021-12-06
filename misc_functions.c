@@ -64,7 +64,6 @@ char *filter_path(char **path, char *command)
 		j = strlen(path[i]);
 		k = strlen(command);
 		u = j + k + 2;
-		printf("%d, %d\n", j, k);
 		temp = malloc(sizeof(char) + u);
 		if (temp == NULL)
 			exit(-1);
@@ -79,7 +78,7 @@ char *filter_path(char **path, char *command)
 		{
 			return (temp);
 		}
-		printf("%s\n\n", temp);
+		/*printf("%s\n\n", temp);*/
 		free(temp);
 	}
 	return (NULL);
