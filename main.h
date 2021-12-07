@@ -18,6 +18,8 @@ typedef struct builtin
 
 
 extern char **environ;
+extern char **__argv;
+extern int __argc;
 
 /* handles ctrl_c */
 void ctrl_c(int sig);
@@ -45,8 +47,9 @@ char **tokenize_path(char *line);
 /*filther path*/
 char * filter_path(char **path, char *command);
 /* check if can be executed */
-int check_exec(char **tokens);
+int check_exec(char **tokens, int argc, char **argv, int tty);
 /*free elements*/
 void free_elements(char *free1, char **free2);
+void error_handling(int argc, char **argv, char **tokenized, int tty);
 
 #endif /*MAIN_HEADER*/

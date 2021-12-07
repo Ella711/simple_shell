@@ -1,6 +1,6 @@
 #include "main.h"
 
-int check_exec(char **tokens)
+int check_exec(char **tokens, int argc, char **argv, int tty)
 {
 	char *path_dir = NULL, *path = NULL, **token_path = NULL;
 	int status = 1;
@@ -18,8 +18,9 @@ int check_exec(char **tokens)
 			return (status);
 		}
 		else
-			perror("Command Not Found");
-		
+		{
+			error_handling(argc, argv, tokens, tty);
+		}
 	}
 	else
 	{

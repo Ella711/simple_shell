@@ -5,7 +5,7 @@ int main(int argc, char **argv, char **env)
 	char *line = NULL, **tokenized = NULL;
 	int (*func_builtin)(char **);
 	int tty = 1, status = 1;
-	(void)(argv), (void)(argc), (void)(env);
+	/* (void)(argv), (void)(argc),  */(void)(env);
 
 	signal(SIGINT, ctrl_c);
 
@@ -32,7 +32,7 @@ int main(int argc, char **argv, char **env)
 		}
 		/*Execute*/
 		if (func_builtin == NULL)
-			status = check_exec(tokenized);
+			status = check_exec(tokenized, argc, argv, tty);
 		else
 			status = func_builtin(tokenized);
 		free_elements(line, tokenized);

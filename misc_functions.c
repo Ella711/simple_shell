@@ -83,3 +83,11 @@ char *filter_path(char **path, char *command)
 	}
 	return (NULL);
 }
+
+void error_handling(int argc, char **argv, char **tokenized, int tty)
+{
+	if (tty == 0)
+		fprintf(stderr, "%s: %d: %s: not found\n", argv[0], argc, tokenized[0]);
+	else
+		fprintf(stderr, "%s: not found\n", tokenized[0]);
+}
