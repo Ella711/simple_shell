@@ -1,19 +1,26 @@
 #include "main.h"
 
+/**
+ * main - simple shell
+ * @argc: argument counter
+ * @argv: arguments
+ * @env: environment variable
+ * Return: 0
+ */
+
 int main(int argc, char **argv, char **env)
 {
 	char *line = NULL, **tokenized = NULL;
 	int (*func_builtin)(char **);
 	int tty = 1, status = 1;
-	/* (void)(argv), (void)(argc),  */(void)(env);
+	(void)(env);
 
 	signal(SIGINT, ctrl_c);
 
 	if (isatty(STDIN_FILENO) == 0)
 		tty = 0;
 
-	do
-	{
+	do {
 		if (tty == 1) /*Interactive Mode*/
 			write(STDOUT_FILENO, "($H3LL) -> ", 11);
 
@@ -40,6 +47,11 @@ int main(int argc, char **argv, char **env)
 	return (0);
 }
 
+/**
+ * read_line - reads the line
+ * Return: string of arguments
+ */
+
 char *read_line(void)
 {
 	char *line = NULL;
@@ -61,12 +73,23 @@ char *read_line(void)
 	return (line);
 }
 
+/**
+ * ctrl_c - handles the ctrl+c signal
+ * @sig: signal
+ */
+
 void ctrl_c(int sig)
 {
 	(void)sig;
 	putchar('\n');
 	write(STDOUT_FILENO, "($H3LL) -> ", 11);
 }
+
+/**
+ * free_elements - frees elements
+ * @free1: pointer to string
+ * @free2: double pointer to string
+ */
 
 void free_elements(char *free1, char **free2)
 {
