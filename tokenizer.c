@@ -1,6 +1,12 @@
 #include "main.h"
 #define buffSTD 64
 
+/**
+ * tokenize_line - tokenizes line of arguments
+ * @line: pointer to line from getline
+ * Return: tokenized line
+ */
+
 char **tokenize_line(char *line)
 {
 	int buff_std = buffSTD, i = 0;
@@ -29,6 +35,12 @@ char **tokenize_line(char *line)
 
 	return (token);
 }
+
+/**
+ * tokenize_path - tokenizes PATH
+ * @line: pointer to PATH from env
+ * Return: tokenized path
+ */
 
 char **tokenize_path(char *line)
 {
