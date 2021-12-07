@@ -10,16 +10,20 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+/**
+ * struct builtin - new typedef for struct
+ * @command: string with command
+ * @command_func: function to execute command
+ */
+
 typedef struct builtin
 {
-    char *command;
-    int (*command_func)(char **args);
+char *command;
+int (*command_func)(char **args);
 } builtin_t;
 
 
 extern char **environ;
-extern char **__argv;
-extern int __argc;
 
 /* handles ctrl_c */
 void ctrl_c(int sig);
@@ -44,15 +48,16 @@ int exe_env(char **args);
 /* READS LINE */
 char *read_line(void);
 /*Look for the PATH*/
-char * look_for_path();
+char *look_for_path();
 /*Tokenize PATH*/
 char **tokenize_path(char *line);
 /*filther path*/
-char * filter_path(char **path, char *command);
+char *filter_path(char **path, char *command);
 /* check if can be executed */
 int check_exec(char **tokens, int argc, char **argv, int tty);
 /*free elements*/
 void free_elements(char *free1, char **free2);
+/* handles errors */
 void error_handling(int argc, char **argv, char **tokenized, int tty);
 
 #endif /*MAIN_HEADER*/
