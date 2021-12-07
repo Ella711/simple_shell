@@ -8,6 +8,7 @@ int (*is_built_in(char **args))(char **tokenized)
         {"cd", exe_cd},
         {"help", exe_help},
         {"exit", exe_exit},
+		{"env", exe_env},
         {NULL, NULL}};
 
     while (commands_built[i].command != NULL)

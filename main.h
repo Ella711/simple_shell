@@ -37,6 +37,9 @@ int exe_cd(char **args);
 int exe_help(char **args);
 /*exit command*/
 int exe_exit(char **args);
+/*print env*/
+int exe_env(char **args);
+
 
 /* READS LINE */
 char *read_line(void);
