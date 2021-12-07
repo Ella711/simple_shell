@@ -40,16 +40,18 @@ char *_strdup(char *str)
  * Return: PATH
  */
 
-char *look_for_path()
+char *look_for_path(char **tokens, int argc, char **argv, int tty)
 {
 	int i = 0;
 
 	while (environ[i])
 	{
-		if (strncmp(environ[i], "PATH", 4) == 0)
+		if (strncmp(environ[i], "PATH=", 5) == 0)
 		{
 			break;
 		}
+		else
+			error_handling(argc, argv, tokens, tty);
 		i++;
 	}
 
@@ -108,7 +110,10 @@ char *filter_path(char **path, char *command)
 void error_handling(int argc, char **argv, char **tokenized, int tty)
 {
 	if (tty == 0)
+	{
 		fprintf(stderr, "%s: %d: %s: not found\n", argv[0], argc, tokenized[0]);
+		exit(127);
+	}
 	else
 		fprintf(stderr, "%s: not found\n", tokenized[0]);
 }

@@ -46,7 +46,7 @@ int exe_env(char **args);
 /* READS LINE */
 char *read_line(void);
 /*Look for the PATH*/
-char *look_for_path();
+char *look_for_path(char **tokens, int argc, char **argv, int tty);
 /*Tokenize PATH*/
 char **tokenize_path(char *line);
 /*filther path*/
