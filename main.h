@@ -18,10 +18,9 @@
 
 typedef struct builtin
 {
-char *command;
-int (*command_func)(char **args);
+	char *command;
+	int (*command_func)(char **args);
 } builtin_t;
-
 
 extern char **environ;
 
@@ -43,7 +42,6 @@ int exe_help(char **args);
 int exe_exit(char **args);
 /*print env*/
 int exe_env(char **args);
-
 
 /* READS LINE */
 char *read_line(void);
