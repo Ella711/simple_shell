@@ -35,9 +35,15 @@ char *_strdup(char *str)
 	return (newString);
 }
 
+/**
+ * look_for_path - looks for PATH
+ * Return: PATH
+ */
+
 char *look_for_path()
 {
 	int i = 0;
+
 	while (environ[i])
 	{
 		if (strncmp(environ[i], "PATH", 4) == 0)
@@ -50,13 +56,20 @@ char *look_for_path()
 	return (environ[i]);
 }
 
+/**
+ * filter_path - concatenates command with each tokened path and checks access
+ * @path: tokenized path
+ * @command: command
+ * Return: NULL if not found
+ */
+
 char *filter_path(char **path, char *command)
 {
 	unsigned int i = 0, j = 0, k = 0, u = 0;
 	char *temp = NULL;
 
-	if(access(command, X_OK) == 0)
-		return(command);
+	if (access(command, X_OK) == 0)
+		return (command);
 
 
 	for (i = 0; path[i]; i++)
@@ -67,9 +80,9 @@ char *filter_path(char **path, char *command)
 		temp = malloc(sizeof(char) + u);
 		if (temp == NULL)
 			exit(-1);
-		
+
 		strcpy(temp, path[i]);
-		
+
 		if (temp[j] != '/')
 			strcat(temp, "/");
 		strcat(temp, command);
@@ -83,6 +96,14 @@ char *filter_path(char **path, char *command)
 	}
 	return (NULL);
 }
+
+/**
+ * error_handling - handles error depending on mode
+ * @argc: argument counter
+ * @argv: arguments
+ * @tokenized: tokenized line of command
+ * @tty: non/interactive mode
+ */
 
 void error_handling(int argc, char **argv, char **tokenized, int tty)
 {
