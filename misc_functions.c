@@ -1,45 +1,14 @@
 #include "main.h"
 
 /**
- * _strdup - returns a pointer to a newly allocated space in memory
+ * look_for_path - search the path on the env
  *
- * @str: Input String
- *
- * Return: Returns null if string is not allocated or returns string allocated
- * in different mem location
- *
+ * @tokens: tokenized path
+ * @argc: number of args
+ * @argv: Arguments
+ * @tty: interactive or not
+ * Return: char*
  */
-
-char *_strdup(char *str)
-{
-	int size = 0, i = 0;
-	char *newString;
-
-	if (str == NULL)
-		return (NULL);
-
-	for (; str[size]; size++)
-		;
-
-	newString = (char *)malloc((size++) * sizeof(char));
-
-	if (newString == NULL)
-		return (NULL);
-
-	else
-	{
-		for (i = 0; i < size; i++)
-			newString[i] = str[i];
-	}
-
-	return (newString);
-}
-
-/**
- * look_for_path - looks for PATH
- * Return: PATH
- */
-
 char *look_for_path(char **tokens, int argc, char **argv, int tty)
 {
 	int i = 0;

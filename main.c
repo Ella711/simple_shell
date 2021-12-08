@@ -29,7 +29,7 @@ int main(int argc, char **argv, char **env)
 		line = read_line();
 		/*TOKEN INPUT*/
 		tokenized = tokenize_line(line);
-		/*Checks Built-in or Non Built-In*/
+		/*Built-in || No-Built-In*/
 		if (tokenized[0])
 			func_builtin = is_built_in(tokenized);
 		else
@@ -85,14 +85,3 @@ void ctrl_c(int sig)
 	write(STDOUT_FILENO, "($H3LL) -> ", 11);
 }
 
-/**
- * free_elements - frees elements
- * @free1: pointer to string
- * @free2: double pointer to string
- */
-
-void free_elements(char *free1, char **free2)
-{
-	free(free1);
-	free(free2);
-}

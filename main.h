@@ -58,4 +58,10 @@ void free_elements(char *free1, char **free2);
 /* handles errors */
 void error_handling(int argc, char **argv, char **tokenized, int tty);
 
+/*Strings*/
+int _strncmp(char *s1, char *s2, int n);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
+
 #endif /*MAIN_HEADER*/
