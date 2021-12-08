@@ -19,20 +19,17 @@ char *look_for_path(char **tokens, int argc, char **argv, int tty)
 		fprintf(stderr, "No Path Found");
 		exit(127);
 	}
-
-
+	
 	while (environ[i])
 	{
-		if (strncmp(environ[i], "PATH=", 5) == 0)
+		if (strncmp(environ[i], "PATH1", 5) == 0)
 		{
-			break;
+			return (environ[i]);
 		}
 		i++;
 	}
-	if(strncmp(environ[i], "PATH=", 5) != 0)
-	{
-		error_handling(argc, argv, tokens, tty);
-	}
+	/* error_handling(argc, argv, tokens, tty); */
+
 	return (environ[i]);
 }
 
