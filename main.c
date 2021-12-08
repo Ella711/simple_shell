@@ -45,7 +45,7 @@ int main(int argc, char **argv, char **env)
 		free_elements(line, tokenized);
 	} while (status);
 
-	if (tty == 0)
+	if (tty != 0)
 		exit(2);
 	else
 		exit(0);
