@@ -12,15 +12,18 @@
 char *look_for_path(char **tokens, int argc, char **argv, int tty)
 {
 	int i = 0;
+	(void)(argc);
+	(void)(argv);
+	(void)(tokens);
+	(void)(tty);
 
 	while (environ[i])
 	{
-		if (strncmp(environ[i], "PATH=", 5) == 0)
+		if (_strncmp(environ[i], "PATH=", 5) == 0)
 		{
 			break;
 		}
-		else
-			error_handling(argc, argv, tokens, tty);
+
 		i++;
 	}
 
@@ -41,7 +44,6 @@ char *filter_path(char **path, char *command)
 
 	if (access(command, X_OK) == 0)
 		return (command);
-
 
 	for (i = 0; path[i]; i++)
 	{
@@ -85,4 +87,27 @@ void error_handling(int argc, char **argv, char **tokenized, int tty)
 	}
 	else
 		fprintf(stderr, "%s: not found\n", tokenized[0]);
+}
+
+/**
+ * _strcmp - Compare two strings
+ * @s1: Input string 1
+ * @s2: Input string 2
+ * Return: Value of the compare
+ */
+int _strcmp(char *s1, char *s2)
+{
+	int compare = 0;
+	int i = 0;
+
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+		{
+			compare = s1[i] - s2[i];
+			break;
+		}
+		i++;
+	}
+	return (compare);
 }

@@ -27,8 +27,8 @@ int exe_cd(char **args)
 
 int exe_help(char **args)
 {
-	printf("Here goes a help proc\n");
-	printf("%s\n", args[0]);
+	(void)(args);
+
 	return (1);
 }
 
@@ -41,7 +41,7 @@ int exe_help(char **args)
 int exe_exit(char **args)
 {
 	(void)(args);
-	printf("Here goes an Exit proc\n");
+
 	return (EXIT_SUCCESS);
 }
 

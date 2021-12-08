@@ -16,7 +16,7 @@ int check_exec(char **tokens, int argc, char **argv, int tty)
 
 	if (access(tokens[0], X_OK) != 0)
 	{
-		path_dir = strdup(look_for_path(argc, argv, tokens, tty));
+		path_dir = strdup(look_for_path(tokens, argc, argv, tty));
 		token_path = tokenize_path(path_dir);
 		path = filter_path(token_path, tokens[0]);
 		free_elements(path_dir, token_path);
