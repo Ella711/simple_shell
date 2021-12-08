@@ -12,6 +12,10 @@
 char *look_for_path(char **tokens, int argc, char **argv, int tty)
 {
 	int i = 0;
+	(void)(argc);
+	(void)(argv);
+	(void)(tty);
+	(void)(tokens);
 
 	if(environ == NULL)
 	{
