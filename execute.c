@@ -60,7 +60,7 @@ int exec_proc(char **args, char *path)
 		ret = execve(path, args, environ);
 		if (ret == -1)
 		{
-			perror("Still here?, there are too many errors to fix go to fix them\n\n");
+			perror("No access");
 			exit(1);
 		}
 	}

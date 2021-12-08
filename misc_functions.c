@@ -12,20 +12,18 @@
 char *look_for_path(char **tokens, int argc, char **argv, int tty)
 {
 	int i = 0;
-	(void)(argc);
-	(void)(argv);
-	(void)(tokens);
-	(void)(tty);
+	
 
 	while (environ[i])
 	{
 		if (_strncmp(environ[i], "PATH=", 5) == 0)
 		{
-			break;
+			return(environ[i]);
 		}
 
 		i++;
 	}
+	error_handling(argc, argv, tokens, tty);
 
 	return (environ[i]);
 }
@@ -83,6 +81,7 @@ void error_handling(int argc, char **argv, char **tokenized, int tty)
 	if (tty == 0)
 	{
 		fprintf(stderr, "%s: %d: %s: not found\n", argv[0], argc, tokenized[0]);
+		free(tokenized);
 		exit(127);
 	}
 	else
