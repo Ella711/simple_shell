@@ -22,7 +22,7 @@ char *look_for_path(char **tokens, int argc, char **argv, int tty)
 	
 	while (environ[i])
 	{
-		if (strncmp(environ[i], "PATH1", 5) == 0)
+		if (strncmp(environ[i], "PATH=", 5) == 0)
 		{
 			return (environ[i]);
 		}
