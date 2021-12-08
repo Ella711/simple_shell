@@ -12,15 +12,13 @@
 char *look_for_path(char **tokens, int argc, char **argv, int tty)
 {
 	int i = 0;
-	
 
 	while (environ[i])
 	{
 		if (_strncmp(environ[i], "PATH=", 5) == 0)
 		{
-			return(environ[i]);
+			return (environ[i]);
 		}
-
 		i++;
 	}
 	error_handling(argc, argv, tokens, tty);
