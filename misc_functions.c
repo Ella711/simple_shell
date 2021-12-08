@@ -23,7 +23,7 @@ char *look_for_path(char **tokens, int argc, char **argv, int tty)
 	}
 	error_handling(argc, argv, tokens, tty);
 
-	return (environ[i]);
+	return (NULL);
 }
 
 /**
