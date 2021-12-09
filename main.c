@@ -44,6 +44,13 @@ int main(int argc, char **argv, char **env)
 			status = func_builtin(tokenized);
 		free_elements(line, tokenized);
 	} while (status);
+
+	if (tty != 0)
+		exit(2);
+	else
+		exit(0);
+	
+
 	return (0);
 }
 
