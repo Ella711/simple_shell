@@ -6,6 +6,7 @@
  * @argc: argument counter
  * @argv: arguments
  * @tty: isatty status
+ * @line: line
  * Return: status
  */
 
