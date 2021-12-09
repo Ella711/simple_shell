@@ -7,6 +7,7 @@
  * @argc: number of args
  * @argv: Arguments
  * @tty: interactive or not
+ * @line: line
  * Return: char*
  */
 char *look_for_path(char **tokens, int argc, char **argv, int tty, char *line)
@@ -69,17 +70,18 @@ char *filter_path(char **path, char *command)
 
 /**
  * error_handling - handles error depending on mode
- * @argc: argument counter
- * @argv: arguments
+ * @ac: argument counter
+ * @av: arguments
  * @tokenized: tokenized line of command
  * @tty: non/interactive mode
+ * @line: line
  */
 
-void error_handling(int argc, char **argv, char **tokenized, int tty, char *line)
+void error_handling(int ac, char **av, char **tokenized, int tty, char *line)
 {
 	if (tty == 0)
 	{
-		fprintf(stderr, "%s: %d: %s: not found\n", argv[0], argc, tokenized[0]);
+		fprintf(stderr, "%s: %d: %s: not found\n", av[0], ac, tokenized[0]);
 		free(tokenized);
 		free(line);
 		exit(127);

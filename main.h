@@ -56,7 +56,7 @@ int check_exec(char **tokens, int argc, char **argv, int tty, char *line);
 /*free elements*/
 void free_elements(char *free1, char **free2);
 /* handles errors */
-void error_handling(int argc, char **argv, char **tokenized, int tty, char *line);
+void error_handling(int ac, char **av, char **tokenized, int tty, char *line);
 
 /*Strings*/
 int _strncmp(char *s1, char *s2, int n);
