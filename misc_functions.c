@@ -9,21 +9,20 @@
  * @tty: interactive or not
  * Return: char*
  */
-char *look_for_path(char **tokens, int argc, char **argv, int tty)
+char *look_for_path(char **tokens, int argc, char **argv, int tty, char *line)
 {
 	int i = 0;
-	
 
 	while (environ[i])
 	{
-		if (_strncmp(environ[i], "PATH=", 5) == 0)
+		if (_strncmp(environ[i], "PATH=", 6) == 0)
 		{
-			return(environ[i]);
+			return (environ[i]);
 		}
 
 		i++;
 	}
-	error_handling(argc, argv, tokens, tty);
+	error_handling(argc, argv, tokens, tty, line);
 
 	return (environ[i]);
 }
@@ -76,12 +75,13 @@ char *filter_path(char **path, char *command)
  * @tty: non/interactive mode
  */
 
-void error_handling(int argc, char **argv, char **tokenized, int tty)
+void error_handling(int argc, char **argv, char **tokenized, int tty, char *line)
 {
 	if (tty == 0)
 	{
 		fprintf(stderr, "%s: %d: %s: not found\n", argv[0], argc, tokenized[0]);
 		free(tokenized);
+		free(line);
 		exit(127);
 	}
 	else

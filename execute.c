@@ -9,14 +9,14 @@
  * Return: status
  */
 
-int check_exec(char **tokens, int argc, char **argv, int tty)
+int check_exec(char **tokens, int argc, char **argv, int tty, char *line)
 {
 	char *path_dir = NULL, *path = NULL, **token_path = NULL;
 	int status = 1;
 
 	if (access(tokens[0], X_OK) != 0)
 	{
-		path_dir = strdup(look_for_path(tokens, argc, argv, tty));
+		path_dir = strdup(look_for_path(tokens, argc, argv, tty, line));
 		token_path = tokenize_path(path_dir);
 		path = filter_path(token_path, tokens[0]);
 		free_elements(path_dir, token_path);
@@ -28,7 +28,7 @@ int check_exec(char **tokens, int argc, char **argv, int tty)
 		}
 		else
 		{
-			error_handling(argc, argv, tokens, tty);
+			error_handling(argc, argv, tokens, tty, line);
 		}
 	}
 	else

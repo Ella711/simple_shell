@@ -46,17 +46,17 @@ int exe_env(char **args);
 /* READS LINE */
 char *read_line(void);
 /*Look for the PATH*/
-char *look_for_path(char **tokens, int argc, char **argv, int tty);
+char *look_for_path(char **tokens, int argc, char **argv, int tty, char *line);
 /*Tokenize PATH*/
 char **tokenize_path(char *line);
 /*filther path*/
 char *filter_path(char **path, char *command);
 /* check if can be executed */
-int check_exec(char **tokens, int argc, char **argv, int tty);
+int check_exec(char **tokens, int argc, char **argv, int tty, char *line);
 /*free elements*/
 void free_elements(char *free1, char **free2);
 /* handles errors */
-void error_handling(int argc, char **argv, char **tokenized, int tty);
+void error_handling(int argc, char **argv, char **tokenized, int tty, char *line);
 
 /*Strings*/
 int _strncmp(char *s1, char *s2, int n);

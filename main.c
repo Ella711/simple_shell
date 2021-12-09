@@ -39,7 +39,7 @@ int main(int argc, char **argv, char **env)
 		}
 		/*Execute*/
 		if (func_builtin == NULL)
-			status = check_exec(tokenized, argc, argv, tty);
+			status = check_exec(tokenized, argc, argv, tty, line);
 		else
 			status = func_builtin(tokenized);
 		free_elements(line, tokenized);
