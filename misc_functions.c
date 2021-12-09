@@ -16,7 +16,7 @@ char *look_for_path(char **tokens, int argc, char **argv, int tty, char *line)
 
 	while (environ[i])
 	{
-		if (_strncmp(environ[i], "PATH=", 6) == 0)
+		if (_strncmp(environ[i], "PATH=/", 6) == 0)
 		{
 			return (environ[i]);
 		}
